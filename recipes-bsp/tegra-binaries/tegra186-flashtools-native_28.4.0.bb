@@ -15,6 +15,8 @@ COMPATIBLE_MACHINE = ""
 inherit native
 
 INHIBIT_DEFAULT_DEPS = "1"
+INHIBIT_SYSROOT_STRIP = "1"
+
 do_compile[noexec] = "1"
 
 BINDIR = "${bindir}/tegra186-flash"
@@ -42,5 +44,6 @@ do_install() {
     install -m 0755 ${S}/bootloader/mkgpt ${D}${BINDIR}
     install -m 0755 ${S}/bootloader/mksparse ${D}${BINDIR}
     install -m 0755 ${S}/bootloader/mkbootimg ${D}${BINDIR}
+    install -m 0644 ${S}/bootloader/l4t_bup_gen.func ${D}${BINDIR}
     install -m 0755 ${S}/tegra186-flash-helper.sh ${D}${BINDIR}
 }
